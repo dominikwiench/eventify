@@ -1,6 +1,15 @@
 from flask import Flask, render_template
+import pymysql
 
 app = Flask(__name__)
+
+# MySQL database conf
+db = pymysql.connect(
+    host='localhost',
+    user='root',
+    password='1234',
+    database='eventify',
+)
 
 
 @app.route('/')
