@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 import pymysql
 
 app = Flask(__name__)
@@ -22,8 +22,26 @@ def testing():
     return render_template('test.html')
 
 
-@app.route('/add')
+@app.route('/add', methods=['POST'])
 def add():
+    if request.method == 'POST':
+        title = request.form['title']
+        desc = request.form['desc']
+        location = request.form['location']
+        peopleCount = request.form['peoplecount']
+        dater = request.form['dater']
+        timer = request.form['timer']
+
+        cur = db.cursor()
+        cur.execute("INSERT INTO events(`title`, `description`, `location`, `peoplecount`, `date`, `time`) VALUES(%s, %s, %s, %s, %s, %s)", (title, desc, location, peopleCount, dater, timer))
+        db.commit()
+        cur.close()
+
+    return redirect('/')
+
+
+@app.route('/addform')
+def addform():
     return render_template('add.html')
 
 

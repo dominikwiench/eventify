@@ -16,22 +16,22 @@
     </div>
         <div class="container mt-5">
             <h1 class="pb-4">Dodaj wydarzenie</h1>
-            <form>
+            <form action="/add" method="post">
                 <div class="form-group">
                   <label for="title">Tytuł (nazwa)</label>
-                  <input type="text" class="form-control" id="title" placeholder="Nazwa wydarzenia (zwięzła, krótka)">
+                  <input type="text" class="form-control" id='title' name='title' placeholder="Nazwa wydarzenia (zwięzła, krótka)">
                 </div>
                 <div class="form-group">
                     <label for="desc">Opis</label>
-                    <input type="text" class="form-control" id="desc" placeholder="Pełen, konkretny opis wydarzenia">
+                    <input type="text" class="form-control" id='desc' name='desc' placeholder="Pełen, konkretny opis wydarzenia">
                 </div>
                 <div class="form-group">
                     <label for="location">Lokalizacja</label>
-                    <input type="text" class="form-control" id="location" placeholder="Miasto, ulica wydarzenia">
+                    <input type="text" class="form-control" id='location' name='location' placeholder="Miasto, ulica wydarzenia">
                 </div>
                 <div class="form-group">
                     <label for="peoplecount">Ilość uczestników</label>
-                    <select class="form-control" id="peoplecount">
+                    <select class="form-control" id='peoplecount' name='peoplecount'>
                       <option>1-10</option>
                       <option>11-50</option>
                       <option>51-100</option>
@@ -45,8 +45,8 @@
                   <div class="form-group">
                     <label for="datetime">Data i godzina wydarzenia</label>
                     <div class="row row-cols-2 mx-1">
-                        <input type="date" class="form-control" id="dater" name="dater">
-                        <input type="time" class="form-control" id="timer" name="timer">
+                        <input type="date" class="form-control" id='dater' name='dater'>
+                        <input type="time" class="form-control" id='timer' name='timer'>
                     </div>
                   </div>
                 <button type="submit" class="btn btn-primary">Zapisz</button>
