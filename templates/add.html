@@ -1,58 +1,123 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventify</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eventify</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
+    body {
+      font-family: Lato;
+      background-image: linear-gradient(to right, #434343 0%, black 100%);
+      color: white;
+    }
+    a {
+      color: rgb(184, 184, 184);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    a:hover {
+      color: white;
+      text-decoration: none;
+    }
+    /* wiadomosc */
+    .modal-dialog {
+      display: flex;
+      align-items: center;
+      min-height: calc(100% - 1rem);
+    }
+    .modal-content {
+      margin: auto;
+    }
+
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form');
+      const submitButton = document.querySelector('button[type="submit"]');
+      const confirmSubmitButton = document.getElementById('confirmSubmit');
+      
+      submitButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        $('#confirmationModal').modal('show');
+      });
+
+      confirmSubmitButton.addEventListener('click', function() {
+        $('#confirmationModal').modal('hide');
+        form.submit();
+      });
+    });
+  </script>
 </head>
 <body>
-    <div class="container mt-5">
-        <div class="jumbotron text-center">
-            <h1>Eventify</h1>
-            <p class="lead">bądź w centrum wydarzeń!</p>
-        </div>
+  <div class="container mt-5">
+    <div class="text-center">
+      <h1 class="text-light display-4">Eventify</h1>
+      <p class="lead text-light opacity-50" style="font-family: 'Courier New', Courier, monospace;">bądź w centrum wydarzeń</p>
     </div>
-        <div class="container mt-5">
-            <h1 class="pb-4">Dodaj wydarzenie</h1>
-            <form action="/add" method="post">
-                <div class="form-group">
-                  <label for="title">Tytuł (nazwa)</label>
-                  <input type="text" class="form-control" id='title' name='title' placeholder="Nazwa wydarzenia (zwięzła, krótka)">
-                </div>
-                <div class="form-group">
-                    <label for="desc">Opis</label>
-                    <input type="text" class="form-control" id='desc' name='desc' placeholder="Pełen, konkretny opis wydarzenia">
-                </div>
-                <div class="form-group">
-                    <label for="location">Lokalizacja</label>
-                    <input type="text" class="form-control" id='location' name='location' placeholder="Miasto, ulica wydarzenia">
-                </div>
-                <div class="form-group">
-                    <label for="peoplecount">Ilość uczestników</label>
-                    <select class="form-control" id='peoplecount' name='peoplecount'>
-                      <option>1-10</option>
-                      <option>11-50</option>
-                      <option>51-100</option>
-                      <option>101-500</option>
-                      <option>501-1000</option>
-                      <option>1001-5000</option>
-                      <option>5001-10000</option>
-                      <option>10000+</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="datetime">Data i godzina wydarzenia</label>
-                    <div class="row row-cols-2 mx-1">
-                        <input type="date" class="form-control" id='dater' name='dater'>
-                        <input type="time" class="form-control" id='timer' name='timer'>
-                    </div>
-                  </div>
-                <button type="submit" class="btn btn-primary">Zapisz</button>
-              </form>
+  </div>
+  <div class="container mt-5">
+    <h1 class="pb-4">Dodaj wydarzenie</h1>
+    <form action="/add" method="post">
+      <div class="form-group">
+        <label for="title">Tytuł (nazwa)</label>
+        <input type="text" class="form-control" id='title' name='title' placeholder="Nazwa wydarzenia (zwięzła, krótka)">
+      </div>
+      <div class="form-group">
+        <label for="desc">Opis</label>
+        <input type="text" class="form-control" id='desc' name='desc' placeholder="Pełen, konkretny opis wydarzenia">
+      </div>
+      <div class="form-group">
+        <label for="location">Lokalizacja</label>
+        <input type="text" class="form-control" id='location' name='location' placeholder="Miasto, ulica wydarzenia">
+      </div>
+      <div class="form-group">
+        <label for="peoplecount">Ilość uczestników</label>
+        <select class="form-control" id='peoplecount' name='peoplecount'>
+          <option>1-10</option>
+          <option>11-50</option>
+          <option>51-100</option>
+          <option>101-500</option>
+          <option>501-1000</option>
+          <option>1001-5000</option>
+          <option>5001-10000</option>
+          <option>10000+</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="datetime">Data i godzina wydarzenia</label>
+        <div class="row" style="width: 30%;">
+          <input type="date" class="form-control col" id='dater' name='dater'>
+          <input type="time" class="form-control col" id='timer' name='timer'>
         </div>
-    
-    
+      </div>
+      <button type="submit" class="btn btn-primary btn-light btn-outline-dark">Zapisz</button>
+    </form>
+  </div>
+  <!-- Custom Confirmation Modal -->
+  <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content"style="color:black;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmationModalLabel">Potwierdź zmiany</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Czy na pewno chcesz dodać wydarzenie?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Anuluj</button>
+          <button type="button" class="btn btn-outline-success" id="confirmSubmit">Tak</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
