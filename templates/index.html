@@ -24,15 +24,66 @@
             color: white;
             text-decoration: none;
         }
+        .col-md-3 img {
+    width: 100%; /* Ensures the image fills its container */
+    height: 100%; /* Ensures the image maintains its aspect ratio */
+    object-fit: cover; /* Ensures the image covers the entire container */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+.col-md-3 img:hover {
+    transform: scale(1.02); /* Scale the image slightly on hover */
+}
+.separator {
+    height: 5px; /* Adjust the height as needed */
+    background-color: #adadad; /* White color */
+    width: 100%; /* Span the entire width of the screen */
+    margin-top: 20px; /* Adjust spacing above the separator */
+    margin-bottom: 20px; /* Adjust spacing below the separator */
+    box-shadow: 0px 2px #838383;
+}
+.one{
+    color:#cfcfcf ;
+}
     </style>
 </head>
 <body>
+    <div class="separator"></div>
     <div class="container mt-5">
         <div class="text-center">
             <h1 class="text-light display-4">Eventify</h1>
             <p class="lead text-light opacity-50"style="font-family: 'Courier New', Courier, monospace;">bądź w centrum wydarzeń</p>
         </div>
     </div>
+    <br>
+    <div class="separator"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark text-light ms-auto justify-content-center">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Wydarzenia <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#onas">O nas</a>
+            <a class="nav-item nav-link" href="#">Kontakt</a>
+          </div>
+    </nav>
+
+<!------------------------------------------------------------------------------------------------------------------------>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="container text-center" style="text-shadow: 0px 3px black">
+        <h1>
+            Wydarzenia na Wyciągnięcie Ręki
+        </h1>
+        <p class="one">
+            Odkryj bogactwo różnorodnych wydarzeń, które inspirują, bawią i angażują.Inspirujące spotkania, kulturalne festiwale i wiele więcej czeka na Ciebie.
+        </p>
+        <h4>
+            Znajdź to, czego szukasz i więcej.
+        </h4>
+      </div>
         <div class="container mt-5" >
             <div class="container px-4 py-5">
                 <h2 class="pb-2 border-bottom">Nocny Półmaraton</h2>
@@ -90,6 +141,56 @@
                 </div>
             </div>
         </div>
+        
+<!--------------------------------------------------------------------------------------------------->
+<div class="separator"></div>
+<br>
+<br>
+<br>
+        <div class="header text-center">
+            <h1>
+                Zespół Eventify
+            </h1>
+        </div>
+        <br>
+        <br>
+
+            <div class="container" id="onas">
+                <div class="row row justify-content-center">
+                <div class="col-md-3">
+                    <img src="dominik.jpg" class="img-fluid rounded" style="padding-bottom: 25px;">
+                    <h3 class="text-center">
+                        Dominik
+                    </h3>
+                    <p class="text-center"style="color:#adadad">
+                        dwaqwatfwagasegsrd gh erdth dtfh tfh dtfh tf htf h tfgrd
+                        gdrgdrgrdgrdgrdgrdgr
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <img src="daria.jpg" class="img-fluid rounded"style="padding-bottom: 25px;">
+                    <h3 class="text-center">
+                        Daria
+                    </h3>
+                    <p class="text-center" style="color:#adadad">
+                        dwaqwatfwagasegsrd gh erdth dtfh tfh dtfh tf htf h tfgrd
+                        gdrgdrgrdgrdgrdgrdgr
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <img src="grzegorz.jpg" class="img-fluid rounded"style="padding-bottom: 25px;">
+                    <h3 class="text-center">
+                        Grzegorz
+                    </h3>
+                    <p class="text-center"style="color:#adadad">
+                        dwaqwatfwagasegsrd gh erdth dtfh tfh dtfh tf htf h tfgrd
+                        gdrgdrgrdgrdgrdgrdgr
+                    </p>
+                </div>
+                </div>
+            </div>
+            
+<!--------------------------------------------------------------------------------------------------->
     
     
 </body>
