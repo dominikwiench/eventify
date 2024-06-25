@@ -24,73 +24,23 @@
             color: white;
             text-decoration: none;
         }
-        .col-md-3 img {
-    width: 100%; /* Ensures the image fills its container */
-    height: 100%; /* Ensures the image maintains its aspect ratio */
-    object-fit: cover; /* Ensures the image covers the entire container */
-    transition: transform 0.3s ease; /* Smooth transition for scaling */
-}
-
-.col-md-3 img:hover {
-    transform: scale(1.02); /* Scale the image slightly on hover */
-}
-.separator {
-    height: 5px; /* Adjust the height as needed */
-    background-color: #adadad; /* White color */
-    width: 100%; /* Span the entire width of the screen */
-    margin-top: 20px; /* Adjust spacing above the separator */
-    margin-bottom: 20px; /* Adjust spacing below the separator */
-    box-shadow: 0px 2px #838383;
-}
-.one{
-    color:#cfcfcf ;
-}
     </style>
 </head>
 <body>
-    <div class="separator"></div>
     <div class="container mt-5">
         <div class="text-center">
             <h1 class="text-light display-4">Eventify</h1>
             <p class="lead text-light opacity-50"style="font-family: 'Courier New', Courier, monospace;">bądź w centrum wydarzeń</p>
         </div>
     </div>
-    <br>
-    <div class="separator"></div>
-    <nav class="navbar navbar-expand-lg navbar-dark text-light ms-auto justify-content-center">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Wydarzenia <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#onas">O nas</a>
-            <a class="nav-item nav-link" href="#">Kontakt</a>
-          </div>
-    </nav>
-
-<!------------------------------------------------------------------------------------------------------------------------>
-        </div>
-      </div>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <div class="container text-center" style="text-shadow: 0px 3px black">
-        <h1>
-            Wydarzenia na Wyciągnięcie Ręki
-        </h1>
-        <p class="one">
-            Odkryj bogactwo różnorodnych wydarzeń, które inspirują, bawią i angażują.Inspirujące spotkania, kulturalne festiwale i wiele więcej czeka na Ciebie.
-        </p>
-        <h4>
-            Znajdź to, czego szukasz i więcej.
-        </h4>
-      </div>
         <div class="container mt-5" >
+            {% for record in records %}
             <div class="container px-4 py-5">
-                <h2 class="pb-2 border-bottom">Nocny Półmaraton</h2>
+                <h2 class="pb-2 border-bottom">{{ record[1]}} </h2>
                 <div class="row g-4 py-3 row-cols-1 row-cols-lg-3">
                   <div class="feature col">
-                    <h3 class="fs-1 text-body-emphasis bg-white border">Wrocław</h3><h4 class="fs-8 text-body-emphasis bg-white"style="font-family: 'Courier New', Courier, monospace;">10.10.2025</h4>
-                    <p class="border-start border-opacity-5">W stosunku do ubiegłej edycji wydarzenia wprowadziliśmy kilka niewielkich, starannie przemyślanych zmian, aby zapewnić jeszcze lepsze wrażenia biegowe. Czekamy na Ciebie na mecie z otwartymi ramionami! Pamiętaj: 12 000 marzeń, 100% determinacji, jedna niezapomniana noc.</p>
+                    <h3 class="fs-1 text-body-emphasis bg-white border">{{ record[3] }}</h3><h4 class="fs-8 text-body-emphasis bg-white"style="font-family: 'Courier New', Courier, monospace;">{{ record[5] }}</h4>
+                    <p class="border-start border-opacity-5">{{ record[2] }}</p>
                   </div>
                   <div class="feature col">
                   </div>
@@ -102,7 +52,7 @@
                         <svg class="w-6 h-6 text-gray-800 dark:text-blue" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10h16m-8-3V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Zm3-7h.01v.01H8V13Zm4 0h.01v.01H12V13Zm4 0h.01v.01H16V13Zm-8 4h.01v.01H8V17Zm4 0h.01v.01H12V17Zm4 0h.01v.01H16V17Z"/>
                           </svg>
-                          10.10.2025, 22:00
+                          {{ record[5] }}, {{ record[6] }}
                     </p>
                     <!--- place of event -->
                     <p style="font-family: 'Courier New', Courier, monospace;">
@@ -110,15 +60,14 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.8 13.938h-.011a7 7 0 1 0-11.464.144h-.016l.14.171c.1.127.2.251.3.371L12 21l5.13-6.248c.194-.209.374-.429.54-.659l.13-.155Z"/>
                         </svg>
-                          
-                        Wrocław
+                        {{ record[3] }}
                     </p>
                     <!--- people count -->
                     <p style="font-family: 'Courier New', Courier, monospace;">
                         <svg class="w-6 h-6 text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                             <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
                           </svg>
-                        10 000+
+                          {{ record[4] }}
                     </p>
                     <br>
                     <div class="row row-cols-2 pl-3">
@@ -129,7 +78,7 @@
                             </svg>
                             Czym dojadę?
                         </a>
-                        <a href="#" class="icon-link" style="color:white;">
+                        <a href="https://www.ebilet.pl/wydarzenia?text={{record[1]}}" class="icon-link" style="color:white;">
                             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.5 12A2.5 2.5 0 0 1 21 9.5V7a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v2.5a2.5 2.5 0 0 1 0 5V17a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
                             </svg>
@@ -140,57 +89,8 @@
                   </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        
-<!--------------------------------------------------------------------------------------------------->
-<div class="separator"></div>
-<br>
-<br>
-<br>
-        <div class="header text-center">
-            <h1>
-                Zespół Eventify
-            </h1>
-        </div>
-        <br>
-        <br>
-
-            <div class="container" id="onas">
-                <div class="row row justify-content-center">
-                <div class="col-md-3">
-                    <img src="dominik.jpg" class="img-fluid rounded" style="padding-bottom: 25px;">
-                    <h3 class="text-center">
-                        Dominik
-                    </h3>
-                    <p class="text-center"style="color:#adadad">
-                        dwaqwatfwagasegsrd gh erdth dtfh tfh dtfh tf htf h tfgrd
-                        gdrgdrgrdgrdgrdgrdgr
-                    </p>
-                </div>
-                <div class="col-md-3">
-                    <img src="daria.jpg" class="img-fluid rounded"style="padding-bottom: 25px;">
-                    <h3 class="text-center">
-                        Daria
-                    </h3>
-                    <p class="text-center" style="color:#adadad">
-                        dwaqwatfwagasegsrd gh erdth dtfh tfh dtfh tf htf h tfgrd
-                        gdrgdrgrdgrdgrdgrdgr
-                    </p>
-                </div>
-                <div class="col-md-3">
-                    <img src="grzegorz.jpg" class="img-fluid rounded"style="padding-bottom: 25px;">
-                    <h3 class="text-center">
-                        Grzegorz
-                    </h3>
-                    <p class="text-center"style="color:#adadad">
-                        dwaqwatfwagasegsrd gh erdth dtfh tfh dtfh tf htf h tfgrd
-                        gdrgdrgrdgrdgrdgrdgr
-                    </p>
-                </div>
-                </div>
-            </div>
-            
-<!--------------------------------------------------------------------------------------------------->
     
     
 </body>
