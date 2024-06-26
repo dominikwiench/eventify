@@ -17,19 +17,21 @@
                 <th scope="col">Wydarzenie</th>
                 <th scope="col">Miejsce</th>
                 <th scope="col">Data</th>
-                <th scope="col">Edytuj</th>
                 <th scope="col">Usuń</th>
             </tr>
         </thead>
         <tbody>
-            {% for post in posts %}
+            {% for record in records %}
             <tr>
-                <th scope="row">{{ post[0] }}</th>
-                <td>{{ post[1] }}</td>
-                <td>{{ post[3] }}</td>
-                <td>{{ post[5] }}</td>
-                <td><a href="" class="btn btn-primary">Edytuj</a></td>
-                <td><a href="" class="btn btn-danger">Usuń</a></td>
+                <th scope="row">{{ record[0] }}</th>
+                <td>{{ record[1] }}</td>
+                <td>{{ record[3] }}</td>
+                <td>{{ record[5] }}</td>
+                <td>
+                    <form action="{{ url_for('remove', record_id=record[0]) }}" method="post">
+                        <button type="submit" class="btn btn-danger">Usuń</a>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
         </tbody>

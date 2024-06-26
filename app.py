@@ -24,8 +24,8 @@ def index():
         cursor.execute(sql)
         result = cursor.fetchall()
         # DEV TEST FUNC 
-        for record in result:
-            print(record)
+        # for record in result:
+        #    print(record)
     return render_template('index.html', records=result)
 
 
@@ -37,9 +37,9 @@ def adminpanel():
         cursor.execute(sql)
         result = cursor.fetchall()
         # DEV TEST FUNC 
-        for record in result:
-            print(record)
-    return render_template('admin.html', posts=result)
+        # for record in result:
+        #    print(record)
+    return render_template('admin.html', records=result)
 
 
 # Add form route and render
@@ -63,6 +63,18 @@ def add():
         db.commit()
         cur.close()
 
+    return redirect('/')
+
+
+@app.route('/delete/<int:record_id>', methods=['POST'])
+def remove(record_id):
+    try:
+        cursor = db.cursor()
+        cursor.execute("DELETE FROM events WHERE id = %s", (record_id))
+        db.commit()
+        cursor.close()
+    except Exception:
+        print("Błąd przy usuwaniu pozycji w panelu")
     return redirect('/')
 
 
