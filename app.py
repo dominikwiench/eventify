@@ -12,22 +12,37 @@ db = pymysql.connect(
 )
 
 
+# @app.route('/')
+# def home():
+#    return render_template('index.html')
+
+
 @app.route('/')
-def home():
-    return render_template('index.html')
-
-
-@app.route('/home')
 def index():
     with db.cursor() as cursor:
         sql = "SELECT * FROM events"
         cursor.execute(sql)
         result = cursor.fetchall()
+        # DEV TEST FUNC 
         for record in result:
             print(record)
-    return render_template('testdb.html', records=result)
+    return render_template('index.html', records=result)
 
 
+# Admin Panel
+@app.route('/admin')
+def adminpanel():
+    with db.cursor() as cursor:
+        sql = "SELECT * FROM events"
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        # DEV TEST FUNC 
+        for record in result:
+            print(record)
+    return render_template('admin.html', posts=result)
+
+
+# Add form route and render
 @app.route('/test')
 def testing():
     return render_template('add.html')
