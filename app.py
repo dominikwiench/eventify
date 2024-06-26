@@ -3,6 +3,7 @@ import pymysql
 
 app = Flask(__name__)
 
+
 # MySQL database conf
 db = pymysql.connect(
     host='localhost',
@@ -43,9 +44,10 @@ def adminpanel():
 
 
 # Add form route and render
-@app.route('/test')
+@app.route('/addform')
 def testing():
     return render_template('add.html')
+
 
 
 @app.route('/add', methods=['POST'])
@@ -63,7 +65,7 @@ def add():
         db.commit()
         cur.close()
 
-    return redirect('/')
+    return redirect('/admin')
 
 
 @app.route('/delete/<int:record_id>', methods=['POST'])
@@ -75,12 +77,44 @@ def remove(record_id):
         cursor.close()
     except Exception:
         print("Błąd przy usuwaniu pozycji w panelu")
-    return redirect('/')
+    return redirect('/admin')
 
 
-@app.route('/addform')
-def addform():
-    return render_template('add.html')
+# Edycja dodanego wydarzenia
+@app.route('/editform/<int:record_id>', methods=['POST'])
+def edit(record_id):
+    try:
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM events WHERE id = %s", (record_id))
+        record = cursor.fetchone()
+    except Exception:
+        print("Błąd przy edycji pozycji w panelu")
+    return render_template('edit.html', record=record)
+
+
+@app.route('/edit/<int:record_id>', methods=['POST'])
+def update(record_id):
+    title = request.form.get('title')
+    desc = request.form.get('desc')
+    location = request.form.get('location')
+    peoplecount = request.form.get('peoplecount')
+    dater = request.form.get('dater')
+    timer = request.form.get('timer')
+
+    try:
+        cursor = db.cursor()
+        cursor.execute("""
+            UPDATE events
+            SET `title` = %s, `description` = %s, `location` = %s, `peoplecount` = %s,
+                       `date` = %s, `time` = %s
+            WHERE id = %s
+        """, (title, desc, location, peoplecount, dater, timer, record_id))
+        db.commit()
+        cursor.close()
+    except Exception as e:
+        print(f"Błąd przy edycji bazy danych: {e}")
+    return redirect('/admin')
+
 
 
 @app.route('/delete')

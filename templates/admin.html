@@ -17,6 +17,7 @@
                 <th scope="col">Wydarzenie</th>
                 <th scope="col">Miejsce</th>
                 <th scope="col">Data</th>
+                <th scope="col">Edytuj</th>
                 <th scope="col">Usuń</th>
             </tr>
         </thead>
@@ -28,6 +29,11 @@
                 <td>{{ record[3] }}</td>
                 <td>{{ record[5] }}</td>
                 <td>
+                    <form action="{{ url_for('edit', record_id=record[0]) }}" method="post">
+                        <button type="submit" class="btn btn-primary">Edytuj</a>
+                    </form>
+                </td>
+                <td>
                     <form action="{{ url_for('remove', record_id=record[0]) }}" method="post">
                         <button type="submit" class="btn btn-danger">Usuń</a>
                     </form>
@@ -36,5 +42,6 @@
             {% endfor %}
         </tbody>
     </table>
+    <a href="/addform" class="btn btn-success">Dodaj wydarzenie</a>
 </body>
 </html>
