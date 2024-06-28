@@ -78,7 +78,8 @@
       </div>
       <div class="form-group">
         <label for="peoplecount">Ilość uczestników</label>
-        <select class="form-control" id='peoplecount' name='peoplecount' value="{{ record[4] }}">
+        <select class="form-control" id='peoplecount' name='peoplecount'>
+          <option value="{{ record[4] }}"></option>
           <option>1-10</option>
           <option>11-50</option>
           <option>51-100</option>
@@ -110,7 +111,7 @@
           </button>
         </div>
         <div class="modal-body">
-          Czy na pewno chcesz dodać wydarzenie?
+          Czy chcesz zapisać poprawione wydarzenie?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Anuluj</button>

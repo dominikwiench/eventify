@@ -49,7 +49,6 @@ def testing():
     return render_template('add.html')
 
 
-
 @app.route('/add', methods=['POST'])
 def add():
     if request.method == 'POST':
