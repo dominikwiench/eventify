@@ -15,6 +15,11 @@
             background-image: linear-gradient(to right, #434343 0%, black 100%);
             color: white;
         }
+        footer {
+            font-family: Lato;
+            background-image: linear-gradient(to right, #434343 0%, black 100%);
+            color: white;
+        }
         a{
             color: rgb(184, 184, 184);
             text-decoration: none;
@@ -61,7 +66,7 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link active" href="#">Wydarzenia <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="#onas">O nas</a>
-            <a class="nav-item nav-link" href="#">Kontakt</a>
+            <a class="nav-item nav-link" href="/admin">Panel Admina</a>
           </div>
     </nav>
 
@@ -75,13 +80,13 @@
       <br>
       <div class="container text-center" style="text-shadow: 0px 3px black">
         <h1>
-            Wydarzenia na Wyciągnięcie Ręki
+            Wydarzenia na wyciągnięcie ręki.
         </h1>
         <p class="one">
             Odkryj bogactwo różnorodnych wydarzeń, które inspirują, bawią i angażują.Inspirujące spotkania, kulturalne festiwale i wiele więcej czeka na Ciebie.
         </p>
         <h4>
-            Znajdź to, czego szukasz i więcej.
+            Znajdź rozrywkę, której szukasz (i wiele więcej)!
         </h4>
       </div>
       <div class="container mt-5" >
@@ -157,42 +162,45 @@
         <br>
         <br>
 
-            <div class="container" id="onas">
+            <div class="container pb-5 mb-3" id="onas">
                 <div class="row row justify-content-center">
                 <div class="col-md-3">
-                    <img src="dominik.jpg" class="img-fluid rounded" style="padding-bottom: 25px;">
+                    <img src="{{ url_for('static', filename='templates/dominik.jpg') }}" class="img-fluid rounded" style="padding-bottom: 25px;">
                     <h3 class="text-center">
                         Dominik
                     </h3>
                     <p class="text-center"style="color:#adadad">
-                        dwaqwatfwagasegsrd gh erdth dtfh tfh dtfh tf htf h tfgrd
-                        gdrgdrgrdgrdgrdgrdgr
+                        Działanie projektu (backend)
                     </p>
                 </div>
                 <div class="col-md-3">
-                    <img src="daria.jpg" class="img-fluid rounded"style="padding-bottom: 25px;">
+                    <img src="{{ url_for('static', filename='templates/daria.jpg') }}" class="img-fluid rounded"style="padding-bottom: 25px;">
                     <h3 class="text-center">
                         Daria
                     </h3>
                     <p class="text-center" style="color:#adadad">
-                        dwaqwatfwagasegsrd gh erdth dtfh tfh dtfh tf htf h tfgrd
-                        gdrgdrgrdgrdgrdgrdgr
+                        Raport, readme, testy projektu
                     </p>
                 </div>
                 <div class="col-md-3">
-                    <img src="grzegorz.jpg" class="img-fluid rounded"style="padding-bottom: 25px;">
+                    <img src="{{ url_for('static', filename='templates/grzegorz.jpg') }}" class="img-fluid rounded"style="padding-bottom: 25px;">
                     <h3 class="text-center">
                         Grzegorz
                     </h3>
                     <p class="text-center"style="color:#adadad">
-                        dwaqwatfwagasegsrd gh erdth dtfh tfh dtfh tf htf h tfgrd
-                        gdrgdrgrdgrdgrdgrdgr
+                        Wygląd projektu (frontend)
                     </p>
                 </div>
                 </div>
             </div>
-            
 <!--------------------------------------------------------------------------------------------------->
-    
+<!-- Footer -->
+    <br>
+    <footer class="text-center text-lg-start bg-body-tertiary text-muted mt-5 flex">
+        <div class="text-center p-4" style="background-color: rgba(74, 74, 74, 0.517);">
+        <p class="text-white">© 2024 Eventify. Wszystkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+<!-- Footer -->
 </body>
 </html>

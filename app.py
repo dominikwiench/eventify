@@ -13,33 +13,23 @@ db = pymysql.connect(
 )
 
 
-# @app.route('/')
-# def home():
-#    return render_template('index.html')
-
-
+# Main website view - route and render
 @app.route('/')
 def index():
     with db.cursor() as cursor:
         sql = "SELECT * FROM events"
         cursor.execute(sql)
         result = cursor.fetchall()
-        # DEV TEST FUNC 
-        # for record in result:
-        #    print(record)
     return render_template('index.html', records=result)
 
 
-# Admin Panel
+# Admin Panel route and render
 @app.route('/admin')
 def adminpanel():
     with db.cursor() as cursor:
         sql = "SELECT * FROM events"
         cursor.execute(sql)
         result = cursor.fetchall()
-        # DEV TEST FUNC 
-        # for record in result:
-        #    print(record)
     return render_template('admin.html', records=result)
 
 
@@ -49,6 +39,7 @@ def testing():
     return render_template('add.html')
 
 
+# Add event function
 @app.route('/add', methods=['POST'])
 def add():
     if request.method == 'POST':
@@ -67,6 +58,7 @@ def add():
     return redirect('/admin')
 
 
+# Removing event from DB
 @app.route('/delete/<int:record_id>', methods=['POST'])
 def remove(record_id):
     try:
@@ -91,6 +83,7 @@ def edit(record_id):
     return render_template('edit.html', record=record)
 
 
+# Updating form event
 @app.route('/edit/<int:record_id>', methods=['POST'])
 def update(record_id):
     title = request.form.get('title')
@@ -100,6 +93,7 @@ def update(record_id):
     dater = request.form.get('dater')
     timer = request.form.get('timer')
 
+# Update DB query
     try:
         cursor = db.cursor()
         cursor.execute("""
@@ -115,7 +109,7 @@ def update(record_id):
     return redirect('/admin')
 
 
-
+# Deleting form event
 @app.route('/delete')
 def delete():
     return render_template('delete.html')
